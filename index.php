@@ -1,24 +1,59 @@
+<?php
+	$formats   = array('.jpg', '.png', '.gif', '.doc', '.csv', '.txt', '.pdf', '.zip', '.rar', '.mp4', '.mp3');
+	$directory = 'root/assets'; 
+	if (isset($_POST['boton'])){
+		$name  = $_FILES['archivo']['name'];
+		$saved = $_FILES['archivo']['tmp_name'];
+		$ext              = substr($name, strrpos($name, '.'));
+		if (in_array($ext, $formats)){
+			if (move_uploaded_file($saved, "$directory/$name")){
+				echo "Felicitaciones, archivo $name subido exitosamente";
+			}else{
+				echo 'Ocurrió un error';
+			}
+		}
+	}
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 </head>
 <body>
-    <header>
-        <nav>
-            <i></i>
-        </nav>
-    </header>
-    <main>
-        <p></p>
-        <form action="upload.php" method="post" enctype="multipart/form-data">
-            <input type="file" name="file">
-            <br><br>
-            <button>Upload</button>
-        </form>
-    </main>
+	<div class="container mt-3">
+		<div class="card">
+			
+			<div class="card-block">
+				<div class="row">
+				<?php
+					if ($dir = opendir($directory)){
+						while ($archive = readdir($dir)) {
+							if ($archive != '.' && $archive != '..'){
+								echo '<div class="col-sm-3 col-xs-12">';
+									echo "Archive: <strong>$archive</strong><br />";
+									
+								echo '</div>';
+							}
+						}
+					}
+				?>
+				</div>
+			</div>
+		</div>
+
+		<h1>Selecciona tu archivo</h1>
+		<form method="post" action="" enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="archvio">File</label>
+				<input type="file" class="form-control-file" id="archvio" aria-describedby="fileHelp" name="archivo">
+				
+			</div>
+			<button type="submit" class="btn btn-primary" name="boton">Upload</button>
+		</form>
+	</div>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </body>
 </html>
