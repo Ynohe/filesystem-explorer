@@ -4,7 +4,7 @@
 	if (isset($_POST['boton'])){
 		$name  = $_FILES['archivo']['name'];
 		$saved = $_FILES['archivo']['tmp_name'];
-		$ext              = substr($name, strrpos($name, '.'));
+		$ext= substr($name, strrpos($name, '.'));
 		if (in_array($ext, $formats)){
 			if (move_uploaded_file($saved, "$directory/$name")){
 				echo "Felicitaciones, archivo $name subido exitosamente";
@@ -33,11 +33,12 @@
 							if ($archive != '.' && $archive != '..'){
 								echo '<div class="col-sm-3 col-xs-12">';
 									echo "Archive: <strong>$archive</strong><br />";
-									
 								echo '</div>';
 							}
 						}
 					}
+                    if(file_exists($archive))
+                        echo "File size:". filesize($archive) . "bytes";
 				?>
 				</div>
 			</div>
@@ -46,7 +47,7 @@
 		<h1>Selecciona tu archivo</h1>
 		<form method="post" action="" enctype="multipart/form-data">
 			<div class="form-group">
-				<label for="archvio">File</label>
+				<label for="archivo">File</label>
 				<input type="file" class="form-control-file" id="archvio" aria-describedby="fileHelp" name="archivo">
 				
 			</div>
