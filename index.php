@@ -1,6 +1,7 @@
 <?php
 	$formats   = array('.jpg', '.png', '.gif', '.doc', '.csv', '.txt', '.pdf', '.zip', '.rar', '.mp4', '.mp3');
-	$directory = 'root/assets'; 
+	$directory = 'root/assets';
+	$extension = glob("root/assets/*.png");
     $time = $_FILES['archivo'];
 	if (isset($_POST['boton'])){
 		$name  = $_FILES['archivo']['name'];
@@ -36,6 +37,7 @@
                                 echo "Archive: <strong>$archive</strong><br />";
                                 echo $_FILES['archivo']['size'] / 1000000;
                                 echo "The last modification date was: " . date ('F d Y H:i:s.', filectime($directory.'/'.$archive));
+								var_dump($extension);
                                 }
                             }   
                         }
