@@ -1,6 +1,7 @@
 <?php
 	$formats   = array('.jpg', '.png', '.gif', '.doc', '.csv', '.txt', '.pdf', '.zip', '.rar', '.mp4', '.mp3');
 	$directory = 'root/assets'; 
+    $time = $_FILES['archivo'];
 	if (isset($_POST['boton'])){
 		$name  = $_FILES['archivo']['name'];
 		$saved = $_FILES['archivo']['tmp_name'];
@@ -28,17 +29,17 @@
 			<div class="card-block">
 				<div class="row">
 				<?php
-					if ($dir = opendir($directory)){
-						while ($archive = readdir($dir)) {
-							if ($archive != '.' && $archive != '..'){
-								echo '<div class="col-sm-3 col-xs-12">';
-									echo "Archive: <strong>$archive</strong><br />";
-								echo '</div>';
-							}
-						}
-					}
-                    if(file_exists($archive))
-                        echo "File size:". filesize($archive) . "bytes";
+					if ($dir = opendir($directory)) {
+                        while ($archive = readdir($dir)) {
+                            if ($archive != '.' && $archive != '..') {
+                                echo '<div class="col-sm-3 col-xs-12">';
+                                echo "Archive: <strong>$archive</strong><br />";
+                                echo $_FILES['archivo']['size'] / 1000000;
+                                echo "The last modification date was: " . date ('F d Y H:i:s.', filectime($directory.'/'.$archive));
+                                }
+                            }   
+                        }
+                    
 				?>
 				</div>
 			</div>
