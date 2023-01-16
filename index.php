@@ -37,7 +37,7 @@ if (isset($_POST['boton'])) {
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="assets/logo/logo.png" alt="Logo" width="50" height="45" class="d-inline-block align-text-top" /></a>
+            <a class="navbar-brand" href="#"><img src="assets/logo/logo.png" alt="Logo" width="200" height="45" class="d-inline-block align-text-top" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
