@@ -1,0 +1,13 @@
+.folder, .file{
+    height: 100px;
+    width: 100px;
+    margin: 15px;
+}
+
+.folder{
+    background-color: rgb(156, 156, 19);
+}
+
+.file{
+    background-color: lightcoral;
+}
