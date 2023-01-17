@@ -20,17 +20,13 @@ if (isset($_POST['boton'])) {
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
-
     <meta charset="utf-8">
     <link rel="stylesheet" href="bootstrap.min.css" crossorigin="anonymous">
     <script src="script.js?v<?php echo time(); ?>" defer></script>
     <link rel="stylesheet" href="style.css?v<?php echo time(); ?>">
 </head>
-
 <body>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="assets/logo/logo.png" alt="Logo" width="50" height="45" class="d-inline-block align-text-top" /></a>
@@ -47,38 +43,21 @@ if (isset($_POST['boton'])) {
             </div>
         </div>
     </nav>
-    <ol class="breadcrumb">
-        <p id="backBtn">BACK</p>
-        <li class="breadcrumb-item"><a href="#" id="upload-btn">Upload</a>
-            <div class="card border-secondary mb-3 d-none" id="upload-modal" style="max-width: 20rem;">
-
-                <div class="card-body"></div>
-
-                <form method="post" action="" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <input type="file" class="form-control-file" id="archvio" aria-describedby="fileHelp" name="archivo">
-
-                    </div>
-                    <button type="submit" class="btn btn-primary" name="boton">Upload</button>
-                </form>
-
-        </li>
-        <li class="breadcrumb-item active">Library</li>
-    </ol>
+    <div class="d-flex flex-row mb-3">
+        <img id="backBtn" class="me-auto p-2 btnimg" src="assets/icons/back.png">
+        <img id="rename-btn" class="btnimg" src="assets/icons/rename.png">
+        <img id="createFolder-btn" class="btnimg" src="assets/icons/create.png">
+        <img id="upload-btn" class="btnimg" src="assets/icons/upload.png">
     </div>
-    <ul class="nav nav-pills">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Quick access</a>
-            <div class="dropdown-menu" style="">
-                <a class="dropdown-item" id="createFolder-btn">Add Folder</a>
-                <a class="dropdown-item" id="rename-btn">Rename</a>
-                <a class="dropdown-item" href="#">Media</a>
-                <a class="dropdown-item" href="#">Others</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Trash</a>
-            </div>
-        </li>
-    </ul>
+        <div class="card border-secondary mb-3 d-none" id="upload-modal" style="max-width: 20rem;">
+            <form method="post" action="" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="file" class="form-control-file" id="archvio" aria-describedby="fileHelp" name="archivo">
+                    <button type="submit" class="btn btn-primary" name="boton">Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="container mt-3" id="main-container">
         <?php require_once('./folderAndFiles.php');
         session_start();
