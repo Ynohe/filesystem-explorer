@@ -1,22 +1,18 @@
 <?php
 $formats = array('.jpg', '.png', '.gif', '.doc', '.csv', '.txt', '.pdf', '.zip', '.rar', '.mp4', '.mp3', '.odt');
 $directory = './root';
-$url_insert = dirname(__DIR__) . "/root";
+$url_insert = dirname(__DIR__) . "./root";
 
 if (isset($_POST['boton'])) {
     $name = $_FILES['archivo']['name'];
 
 
     $saved = $_FILES['archivo']['tmp_name'];
-    echo "variable1" . $saved;
-    echo "<br>";
-    echo  "variable3" . "$directory/$name";
+    // echo "variable1" . $saved;
+    // echo  "variable3" . "$directory/$name";
     $ext = substr($name, strrpos($name, '.'));
     if (in_array($ext, $formats)) {
         if (move_uploaded_file($saved, "$directory/$name")) {
-            echo "Congratulations! $name uploaded correctly";
-        } else {
-            echo ' sorry, an error occurred';
         }
     }
 }
@@ -37,7 +33,7 @@ if (isset($_POST['boton'])) {
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="assets/logo/logo.png" alt="Logo" width="200" height="45" class="d-inline-block align-text-top" /></a>
+            <a class="navbar-brand" href="#"><img src="assets/logo/logo.png" alt="Logo" width="50" height="45" class="d-inline-block align-text-top" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -75,7 +71,7 @@ if (isset($_POST['boton'])) {
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Quick access</a>
             <div class="dropdown-menu" style="">
                 <a class="dropdown-item" id="createFolder-btn">Add Folder</a>
-                <a class="dropdown-item" href="#">Documents</a>
+                <a class="dropdown-item" id="rename-btn">Rename</a>
                 <a class="dropdown-item" href="#">Media</a>
                 <a class="dropdown-item" href="#">Others</a>
                 <div class="dropdown-divider"></div>
